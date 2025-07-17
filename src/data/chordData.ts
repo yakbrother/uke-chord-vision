@@ -47,29 +47,85 @@ export const tunings: Record<string, Tuning> = {
     name: "EAEA",
     notes: ["E", "A", "E", "A"],
     chords: {
+      // Major Chords - Full Triads
       "A": [
-        { frets: [0, 0, 0, 0], fingers: [null, null, null, null], name: "A" },
-        { frets: [2, 2, 2, 2], fingers: [1, 2, 3, 4], name: "A (2nd)" }
+        { frets: [0, 0, 0, 4], fingers: [null, null, null, 4], name: "A" },
+        { frets: [0, 4, 0, 0], fingers: [null, 4, null, null], name: "A (1st inv)" },
+        { frets: [5, 0, 5, 0], fingers: [3, null, 4, null], name: "A (5th pos)" }
+      ],
+      "B": [
+        { frets: [7, 2, 7, 5], fingers: [4, 1, 3, 2], name: "B" },
+        { frets: [2, 7, 2, 5], fingers: [1, 4, 2, 3], name: "B (alt)" }
+      ],
+      "C": [
+        { frets: [8, 3, 8, 0], fingers: [3, 2, 4, null], name: "C" },
+        { frets: [3, 8, 3, 6], fingers: [1, 4, 2, 3], name: "C (alt)" }
       ],
       "D": [
-        { frets: [2, 2, 2, 2], fingers: [1, 2, 3, 4], name: "D" },
-        { frets: [7, 7, 7, 7], fingers: [1, 2, 3, 4], name: "D (7th)" }
+        { frets: [10, 5, 10, 2], fingers: [4, 2, 3, 1], name: "D" },
+        { frets: [5, 10, 5, 8], fingers: [1, 4, 2, 3], name: "D (alt)" },
+        { frets: ['x', 5, 'x', 2], fingers: [null, 3, null, 1], name: "D (dyad)" }
       ],
       "E": [
-        { frets: [0, 2, 0, 2], fingers: [null, 1, null, 2], name: "E" },
-        { frets: [4, 6, 4, 6], fingers: [1, 3, 2, 4], name: "E (4th)" }
+        { frets: [0, 7, 0, 4], fingers: [null, 3, null, 2], name: "E" },
+        { frets: [7, 0, 7, 4], fingers: [3, null, 4, 2], name: "E (alt)" },
+        { frets: [0, 'x', 0, 'x'], fingers: [null, null, null, null], name: "E (power)" }
+      ],
+      "F": [
+        { frets: [1, 8, 1, 5], fingers: [1, 4, 2, 3], name: "F" },
+        { frets: [8, 1, 8, 5], fingers: [3, 1, 4, 2], name: "F (alt)" }
+      ],
+      "G": [
+        { frets: [3, 10, 3, 7], fingers: [1, 4, 2, 3], name: "G" },
+        { frets: [10, 3, 10, 7], fingers: [3, 1, 4, 2], name: "G (alt)" }
+      ],
+
+      // Minor Chords - Full Triads  
+      "Am": [
+        { frets: [0, 0, 0, 3], fingers: [null, null, null, 3], name: "Am" },
+        { frets: [0, 3, 0, 0], fingers: [null, 3, null, null], name: "Am (1st inv)" },
+        { frets: [5, 0, 5, 3], fingers: [3, null, 4, 2], name: "Am (5th pos)" }
       ],
       "Bm": [
-        { frets: [2, 0, 2, 0], fingers: [2, null, 3, null], name: "Bm" },
-        { frets: [4, 2, 4, 2], fingers: [3, 1, 4, 2], name: "Bm (4th)" }
+        { frets: [7, 2, 7, 4], fingers: [4, 1, 3, 2], name: "Bm" },
+        { frets: [2, 7, 2, 4], fingers: [1, 4, 2, 3], name: "Bm (alt)" },
+        { frets: ['x', 2, 'x', 4], fingers: [null, 1, null, 2], name: "Bm (dyad)" }
       ],
-      "C#m": [
-        { frets: [4, 2, 4, 2], fingers: [3, 1, 4, 2], name: "C#m" },
-        { frets: [6, 4, 6, 4], fingers: [3, 1, 4, 2], name: "C#m (6th)" }
+      "Cm": [
+        { frets: [8, 3, 8, 5], fingers: [4, 1, 3, 2], name: "Cm" },
+        { frets: [3, 8, 3, 5], fingers: [1, 4, 2, 3], name: "Cm (alt)" }
       ],
-      "F#m": [
-        { frets: [1, 1, 1, 1], fingers: [1, 2, 3, 4], name: "F#m" },
-        { frets: [6, 6, 6, 6], fingers: [1, 2, 3, 4], name: "F#m (6th)" }
+      "Dm": [
+        { frets: [10, 5, 10, 1], fingers: [4, 3, 2, 1], name: "Dm" },
+        { frets: [5, 10, 5, 7], fingers: [1, 4, 2, 3], name: "Dm (alt)" },
+        { frets: ['x', 5, 'x', 1], fingers: [null, 2, null, 1], name: "Dm (dyad)" }
+      ],
+      "Em": [
+        { frets: [0, 7, 0, 3], fingers: [null, 4, null, 2], name: "Em" },
+        { frets: [7, 0, 7, 3], fingers: [3, null, 4, 2], name: "Em (alt)" },
+        { frets: [0, 'x', 0, 3], fingers: [null, null, null, 3], name: "Em (dyad)" }
+      ],
+      "Fm": [
+        { frets: [1, 8, 1, 4], fingers: [1, 4, 2, 3], name: "Fm" },
+        { frets: [8, 1, 8, 4], fingers: [3, 1, 4, 2], name: "Fm (alt)" }
+      ],
+      "Gm": [
+        { frets: [3, 10, 3, 6], fingers: [1, 4, 2, 3], name: "Gm" },
+        { frets: [10, 3, 10, 6], fingers: [3, 1, 4, 2], name: "Gm (alt)" }
+      ],
+
+      // Two-Note Dyads - Major Character
+      "A5": [
+        { frets: [0, 0, 0, 'x'], fingers: [null, null, null, null], name: "A5 (root+5th)" },
+        { frets: ['x', 0, 'x', 4], fingers: [null, null, null, 4], name: "A (root+3rd)" }
+      ],
+      "D5": [
+        { frets: ['x', 5, 'x', 'x'], fingers: [null, 1, null, null], name: "D5 (root only)" },
+        { frets: ['x', 5, 'x', 2], fingers: [null, 2, null, 1], name: "D (root+3rd)" }
+      ],
+      "E5": [
+        { frets: [0, 'x', 0, 'x'], fingers: [null, null, null, null], name: "E5 (root+5th)" },
+        { frets: [0, 'x', 'x', 4], fingers: [null, null, null, 4], name: "E (root+3rd)" }
       ]
     }
   },
