@@ -8,26 +8,38 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Warm ukulele-inspired color palette */
+    --background: 45 15% 97%;
+    --foreground: 25 25% 15%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 42 20% 95%;
+    --card-foreground: 25 25% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 42 20% 95%;
+    --popover-foreground: 25 25% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 25 65% 45%;
+    --primary-foreground: 45 15% 97%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 35 25% 85%;
+    --secondary-foreground: 25 25% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 35 15% 90%;
+    --muted-foreground: 25 15% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 35 45% 75%;
+    --accent-foreground: 25 25% 15%;
+
+    /* Ukulele-specific colors */
+    --ukulele-wood: 30 35% 65%;
+    --ukulele-string: 45 8% 75%;
+    --ukulele-fret: 25 15% 35%;
+    --chord-finger: 15 75% 55%;
+    --chord-highlight: 45 85% 65%;
+    
+    /* Gradients */
+    --gradient-wood: linear-gradient(135deg, hsl(30 40% 70%), hsl(25 35% 55%));
+    --gradient-warm: linear-gradient(180deg, hsl(45 25% 95%), hsl(35 20% 85%));
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;

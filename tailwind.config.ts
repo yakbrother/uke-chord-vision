@@ -61,7 +61,20 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				ukulele: {
+					wood: 'hsl(var(--ukulele-wood))',
+					string: 'hsl(var(--ukulele-string))',
+					fret: 'hsl(var(--ukulele-fret))'
+				},
+				chord: {
+					finger: 'hsl(var(--chord-finger))',
+					highlight: 'hsl(var(--chord-highlight))'
 				}
+			},
+			backgroundImage: {
+				'gradient-wood': 'var(--gradient-wood)',
+				'gradient-warm': 'var(--gradient-warm)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
