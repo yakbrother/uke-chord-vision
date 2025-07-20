@@ -1,4 +1,8 @@
 import { cn } from "@/lib/utils";
+import { getChordNotes } from "@/utils/noteCalculator";
+import { audioPlayer } from "@/utils/audioPlayer";
+import { Button } from "@/components/ui/button";
+import { Play, Volume2 } from "lucide-react";
 
 interface ChordDiagram {
   frets: (number | 'x')[];  // Fret numbers for each string (0 = open, x = muted)
@@ -18,11 +22,43 @@ export const UkuleleChordDiagram = ({ chord, className }: UkuleleChordDiagramPro
   const startFret = minFret > 3 ? minFret : 1;
   const endFret = Math.max(startFret + 3, maxFret);
   const fretRange = Array.from({ length: endFret - startFret + 1 }, (_, i) => startFret + i);
+  
+  const chordNotes = getChordNotes(chord.tuning, chord.frets);
+  
+  const playChord = () => {
+    audioPlayer.playChord(chordNotes);
+  };
+  
+  const playArpeggio = () => {
+    audioPlayer.playChord(chordNotes, true);
+  };
 
   return (
     <div className={cn("flex flex-col items-center space-y-4", className)}>
-      {/* Chord Name */}
-      <h3 className="text-xl font-bold text-foreground">{chord.name}</h3>
+      {/* Chord Name and Play Buttons */}
+      <div className="flex items-center gap-3">
+        <h3 className="text-xl font-bold text-foreground">{chord.name}</h3>
+        <div className="flex gap-2">
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={playChord}
+            className="flex items-center gap-1"
+          >
+            <Play className="w-3 h-3" />
+            Chord
+          </Button>
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={playArpeggio}
+            className="flex items-center gap-1"
+          >
+            <Volume2 className="w-3 h-3" />
+            Arp
+          </Button>
+        </div>
+      </div>
       
       {/* Fret Position Indicator */}
       {startFret > 1 && (
@@ -116,6 +152,7 @@ export const UkuleleChordDiagram = ({ chord, className }: UkuleleChordDiagramPro
               const fretPosition = fret - startFret;
               const yPosition = 55 + fretPosition * 30;
               const finger = chord.fingers?.[stringIndex];
+              const noteName = chordNotes[stringIndex];
               
               return (
                 <g key={stringIndex}>
@@ -137,6 +174,17 @@ export const UkuleleChordDiagram = ({ chord, className }: UkuleleChordDiagramPro
                       {finger}
                     </text>
                   )}
+                  {/* Note name above the fretted position */}
+                  {noteName && (
+                    <text
+                      x={30 + stringIndex * 30}
+                      y={yPosition - 15}
+                      textAnchor="middle"
+                      className="fill-accent-foreground text-xs font-medium"
+                    >
+                      {noteName}
+                    </text>
+                  )}
                 </g>
               );
             }
@@ -144,13 +192,16 @@ export const UkuleleChordDiagram = ({ chord, className }: UkuleleChordDiagramPro
         </svg>
       </div>
       
-      {/* Fingering Pattern Display */}
+      {/* Fingering Pattern Display with Notes */}
       <div className="flex space-x-2 text-sm">
         {chord.frets.map((fret, index) => (
           <div key={index} className="flex flex-col items-center">
             <span className="text-muted-foreground">{chord.tuning[index]}</span>
             <span className="font-mono font-bold text-foreground">
               {fret === 'x' ? '×' : fret === 0 ? '0' : fret}
+            </span>
+            <span className="text-xs text-accent-foreground font-medium">
+              {chordNotes[index] || (fret === 'x' ? '—' : chord.tuning[index])}
             </span>
           </div>
         ))}
