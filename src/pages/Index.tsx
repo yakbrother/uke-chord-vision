@@ -6,7 +6,7 @@ import heroImage from "@/assets/hero-ukulele.jpg";
 import musicalNotes from "@/assets/musical-notes.jpg";
 
 const Index = () => {
-  const [selectedTuning, setSelectedTuning] = useState<string>("standard");
+  const [selectedTuning, setSelectedTuning] = useState<string>("eacsharp");
 
   return (
     <div className="min-h-screen bg-gradient-warm">
@@ -30,7 +30,7 @@ const Index = () => {
               </p>
               <div className="flex items-center justify-center space-x-2 pt-4">
                 <div className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm">
-                  EAEA
+                  E A C# F#
                 </div>
                 <div className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm">
                   Open C
