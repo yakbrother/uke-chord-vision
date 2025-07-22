@@ -80,6 +80,41 @@ class AudioPlayer {
     }
   }
 
+  async playChordWithOctaves(notesWithOctaves: Array<{note: string | null, octave: number}>, arpeggiate: boolean = false) {
+    if (this.isPlaying) return;
+    
+    try {
+      this.isPlaying = true;
+      await this.initAudioContext();
+
+      const validNotes = notesWithOctaves.filter(n => n.note !== null);
+      const duration = arpeggiate ? 0.8 : 1.5;
+      
+      if (arpeggiate) {
+        // Play notes in sequence
+        for (let i = 0; i < validNotes.length; i++) {
+          const frequency = this.getNoteFrequency(validNotes[i].note!, validNotes[i].octave);
+          await this.playNote(frequency, duration, i * 0.15);
+        }
+      } else {
+        // Play all notes together
+        validNotes.forEach(noteData => {
+          const frequency = this.getNoteFrequency(noteData.note!, noteData.octave);
+          this.playNote(frequency, duration);
+        });
+      }
+      
+      // Reset playing state after sound finishes
+      setTimeout(() => {
+        this.isPlaying = false;
+      }, (arpeggiate ? validNotes.length * 150 + duration * 1000 : duration * 1000));
+      
+    } catch (error) {
+      console.error('Audio playback failed:', error);
+      this.isPlaying = false;
+    }
+  }
+
   stop() {
     if (this.audioContext) {
       this.audioContext.suspend();

@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { getChordNotes } from "@/utils/noteCalculator";
+import { getChordNotes, getChordNotesWithOctaves } from "@/utils/noteCalculator";
 import { audioPlayer } from "@/utils/audioPlayer";
 import { Button } from "@/components/ui/button";
 import { Play, Volume2 } from "lucide-react";
@@ -9,6 +9,7 @@ interface ChordDiagram {
   fingers?: (number | null)[];  // Finger numbers (1-4) for each string
   name: string;
   tuning: string[];
+  tuningName?: string; // Add tuning name for octave calculation
 }
 
 interface UkuleleChordDiagramProps {
@@ -24,13 +25,24 @@ export const UkuleleChordDiagram = ({ chord, className }: UkuleleChordDiagramPro
   const fretRange = Array.from({ length: endFret - startFret + 1 }, (_, i) => startFret + i);
   
   const chordNotes = getChordNotes(chord.tuning, chord.frets);
+  const chordNotesWithOctaves = chord.tuningName ? 
+    getChordNotesWithOctaves(chord.tuningName, chord.tuning, chord.frets) : 
+    chordNotes.map(note => ({ note, octave: 4 }));
   
   const playChord = () => {
-    audioPlayer.playChord(chordNotes);
+    if (chord.tuningName) {
+      audioPlayer.playChordWithOctaves(chordNotesWithOctaves);
+    } else {
+      audioPlayer.playChord(chordNotes);
+    }
   };
   
   const playArpeggio = () => {
-    audioPlayer.playChord(chordNotes, true);
+    if (chord.tuningName) {
+      audioPlayer.playChordWithOctaves(chordNotesWithOctaves, true);
+    } else {
+      audioPlayer.playChord(chordNotes, true);
+    }
   };
 
   return (

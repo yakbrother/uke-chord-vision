@@ -81,7 +81,8 @@ export const ChordLibrary = ({ selectedTuning }: ChordLibraryProps) => {
           <UkuleleChordDiagram
             chord={{
               ...currentVariation,
-              tuning: tuningData.notes
+              tuning: tuningData.notes,
+              tuningName: selectedTuning.toUpperCase()
             }}
           />
         </CardContent>
