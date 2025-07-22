@@ -13,6 +13,219 @@ export interface Tuning {
 }
 
 export const tunings: Record<string, Tuning> = {
+  adfb: {
+    name: "A D F# B (Open D)",
+    notes: ["A", "D", "F#", "B"],
+    chords: {
+      // Major Chords
+      "A": [
+        { frets: [0, 0, 0, 0], fingers: [null, null, null, null], name: "A (open)" },
+        { frets: [2, 2, 2, 2], fingers: [1, 2, 3, 4], name: "A (2nd)" }
+      ],
+      "B": [
+        { frets: [2, 2, 2, 0], fingers: [2, 3, 4, null], name: "B" },
+        { frets: [0, 0, 0, 2], fingers: [null, null, null, 2], name: "B" }
+      ],
+      "C": [
+        { frets: [3, 3, 3, 3], fingers: [1, 2, 3, 4], name: "C" },
+        { frets: [5, 5, 5, 5], fingers: [1, 2, 3, 4], name: "C (5th)" }
+      ],
+      "D": [
+        { frets: [0, 0, 2, 4], fingers: [null, null, 1, 3], name: "D" },
+        { frets: [2, 0, 2, 4], fingers: [2, null, 1, 4], name: "D" }
+      ],
+      "E": [
+        { frets: [2, 2, 4, 2], fingers: [1, 2, 4, 3], name: "E" },
+        { frets: [4, 4, 6, 4], fingers: [1, 2, 4, 3], name: "E (4th)" }
+      ],
+      "F": [
+        { frets: [3, 3, 5, 3], fingers: [1, 2, 4, 3], name: "F" },
+        { frets: [1, 1, 3, 1], fingers: [1, 2, 4, 3], name: "F" }
+      ],
+      "G": [
+        { frets: [0, 2, 0, 2], fingers: [null, 2, null, 3], name: "G" },
+        { frets: [5, 7, 5, 7], fingers: [1, 3, 2, 4], name: "G (5th)" }
+      ],
+
+      // Minor Chords
+      "Am": [
+        { frets: [0, 0, 2, 2], fingers: [null, null, 1, 2], name: "Am" },
+        { frets: [2, 2, 4, 2], fingers: [1, 2, 4, 3], name: "Am (2nd)" }
+      ],
+      "Bm": [
+        { frets: [2, 2, 2, 1], fingers: [2, 3, 4, 1], name: "Bm" },
+        { frets: [0, 0, 0, 1], fingers: [null, null, null, 1], name: "Bm" }
+      ],
+      "Cm": [
+        { frets: [3, 3, 3, 2], fingers: [2, 3, 4, 1], name: "Cm" },
+        { frets: [5, 5, 5, 4], fingers: [2, 3, 4, 1], name: "Cm (5th)" }
+      ],
+      "Dm": [
+        { frets: [0, 0, 2, 3], fingers: [null, null, 1, 2], name: "Dm" },
+        { frets: [2, 0, 2, 3], fingers: [2, null, 1, 3], name: "Dm" }
+      ],
+      "Em": [
+        { frets: [2, 2, 4, 1], fingers: [2, 3, 4, 1], name: "Em" },
+        { frets: [4, 4, 6, 3], fingers: [2, 3, 4, 1], name: "Em (4th)" }
+      ],
+      "Fm": [
+        { frets: [3, 3, 5, 2], fingers: [2, 3, 4, 1], name: "Fm" },
+        { frets: [1, 1, 3, 0], fingers: [2, 3, 4, null], name: "Fm" }
+      ],
+      "Gm": [
+        { frets: [0, 2, 0, 1], fingers: [null, 3, null, 1], name: "Gm" },
+        { frets: [5, 7, 5, 6], fingers: [1, 4, 2, 3], name: "Gm (5th)" }
+      ],
+
+      // Sharp Major Chords
+      "A#": [
+        { frets: [1, 1, 1, 1], fingers: [1, 2, 3, 4], name: "A#" },
+        { frets: [3, 3, 3, 3], fingers: [1, 2, 3, 4], name: "A#" }
+      ],
+      "C#": [
+        { frets: [4, 4, 4, 4], fingers: [1, 2, 3, 4], name: "C#" },
+        { frets: [6, 6, 6, 6], fingers: [1, 2, 3, 4], name: "C#" }
+      ],
+      "D#": [
+        { frets: [1, 1, 3, 5], fingers: [1, 2, 3, 4], name: "D#" },
+        { frets: [3, 1, 3, 5], fingers: [3, 1, 2, 4], name: "D#" }
+      ],
+      "F#": [
+        { frets: [4, 4, 6, 4], fingers: [1, 2, 4, 3], name: "F#" },
+        { frets: [2, 2, 4, 2], fingers: [1, 2, 4, 3], name: "F#" }
+      ],
+      "G#": [
+        { frets: [1, 3, 1, 3], fingers: [1, 3, 2, 4], name: "G#" },
+        { frets: [6, 8, 6, 8], fingers: [1, 3, 2, 4], name: "G#" }
+      ],
+
+      // Sharp Minor Chords
+      "A#m": [
+        { frets: [1, 1, 3, 3], fingers: [1, 2, 3, 4], name: "A#m" },
+        { frets: [3, 3, 5, 3], fingers: [1, 2, 4, 3], name: "A#m" }
+      ],
+      "C#m": [
+        { frets: [4, 4, 4, 3], fingers: [2, 3, 4, 1], name: "C#m" },
+        { frets: [6, 6, 6, 5], fingers: [2, 3, 4, 1], name: "C#m" }
+      ],
+      "D#m": [
+        { frets: [1, 1, 3, 4], fingers: [1, 2, 3, 4], name: "D#m" },
+        { frets: [3, 1, 3, 4], fingers: [2, 1, 3, 4], name: "D#m" }
+      ],
+      "F#m": [
+        { frets: [4, 4, 6, 3], fingers: [2, 3, 4, 1], name: "F#m" },
+        { frets: [2, 2, 4, 1], fingers: [2, 3, 4, 1], name: "F#m" }
+      ],
+      "G#m": [
+        { frets: [1, 3, 1, 2], fingers: [1, 4, 2, 3], name: "G#m" },
+        { frets: [6, 8, 6, 7], fingers: [1, 4, 2, 3], name: "G#m" }
+      ],
+
+      // Major 7th Chords
+      "AMaj7": [
+        { frets: [0, 0, 2, 1], fingers: [null, null, 2, 1], name: "AMaj7" },
+        { frets: [2, 2, 4, 1], fingers: [2, 3, 4, 1], name: "AMaj7" }
+      ],
+      "BMaj7": [
+        { frets: [2, 2, 2, 1], fingers: [2, 3, 4, 1], name: "BMaj7" },
+        { frets: [0, 0, 0, 1], fingers: [null, null, null, 1], name: "BMaj7" }
+      ],
+      "CMaj7": [
+        { frets: [3, 3, 3, 2], fingers: [2, 3, 4, 1], name: "CMaj7" },
+        { frets: [5, 5, 5, 4], fingers: [2, 3, 4, 1], name: "CMaj7" }
+      ],
+      "DMaj7": [
+        { frets: [0, 0, 2, 3], fingers: [null, null, 1, 2], name: "DMaj7" },
+        { frets: [2, 0, 2, 3], fingers: [2, null, 1, 3], name: "DMaj7" }
+      ],
+      "EMaj7": [
+        { frets: [2, 2, 4, 1], fingers: [2, 3, 4, 1], name: "EMaj7" },
+        { frets: [4, 4, 6, 3], fingers: [2, 3, 4, 1], name: "EMaj7" }
+      ],
+      "FMaj7": [
+        { frets: [3, 3, 5, 2], fingers: [2, 3, 4, 1], name: "FMaj7" },
+        { frets: [1, 1, 3, 0], fingers: [2, 3, 4, null], name: "FMaj7" }
+      ],
+      "GMaj7": [
+        { frets: [0, 2, 0, 1], fingers: [null, 3, null, 1], name: "GMaj7" },
+        { frets: [5, 7, 5, 6], fingers: [1, 4, 2, 3], name: "GMaj7" }
+      ],
+
+      // Minor 7th Chords
+      "Am7": [
+        { frets: [0, 0, 2, 0], fingers: [null, null, 2, null], name: "Am7" },
+        { frets: [2, 2, 4, 0], fingers: [2, 3, 4, null], name: "Am7" }
+      ],
+      "Bm7": [
+        { frets: [2, 2, 2, 0], fingers: [2, 3, 4, null], name: "Bm7" },
+        { frets: [0, 0, 0, 0], fingers: [null, null, null, null], name: "Bm7" }
+      ],
+      "Cm7": [
+        { frets: [3, 3, 3, 1], fingers: [3, 4, 2, 1], name: "Cm7" },
+        { frets: [5, 5, 5, 3], fingers: [3, 4, 2, 1], name: "Cm7" }
+      ],
+      "Dm7": [
+        { frets: [0, 0, 2, 2], fingers: [null, null, 1, 2], name: "Dm7" },
+        { frets: [2, 0, 2, 2], fingers: [3, null, 1, 2], name: "Dm7" }
+      ],
+      "Em7": [
+        { frets: [2, 2, 4, 0], fingers: [2, 3, 4, null], name: "Em7" },
+        { frets: [4, 4, 6, 2], fingers: [2, 3, 4, 1], name: "Em7" }
+      ],
+      "Fm7": [
+        { frets: [3, 3, 5, 1], fingers: [3, 4, 2, 1], name: "Fm7" },
+        { frets: [1, 1, 3, 1], fingers: [1, 2, 4, 3], name: "Fm7" }
+      ],
+      "Gm7": [
+        { frets: [0, 2, 0, 0], fingers: [null, 2, null, null], name: "Gm7" },
+        { frets: [5, 7, 5, 5], fingers: [1, 4, 2, 3], name: "Gm7" }
+      ],
+
+      // Sharp Major 7th Chords
+      "A#Maj7": [
+        { frets: [1, 1, 3, 2], fingers: [1, 2, 4, 3], name: "A#Maj7" },
+        { frets: [3, 3, 5, 2], fingers: [2, 3, 4, 1], name: "A#Maj7" }
+      ],
+      "C#Maj7": [
+        { frets: [4, 4, 4, 3], fingers: [2, 3, 4, 1], name: "C#Maj7" },
+        { frets: [6, 6, 6, 5], fingers: [2, 3, 4, 1], name: "C#Maj7" }
+      ],
+      "D#Maj7": [
+        { frets: [1, 1, 3, 4], fingers: [1, 2, 3, 4], name: "D#Maj7" },
+        { frets: [3, 1, 3, 4], fingers: [2, 1, 3, 4], name: "D#Maj7" }
+      ],
+      "F#Maj7": [
+        { frets: [4, 4, 6, 3], fingers: [2, 3, 4, 1], name: "F#Maj7" },
+        { frets: [2, 2, 4, 1], fingers: [2, 3, 4, 1], name: "F#Maj7" }
+      ],
+      "G#Maj7": [
+        { frets: [1, 3, 1, 2], fingers: [1, 4, 2, 3], name: "G#Maj7" },
+        { frets: [6, 8, 6, 7], fingers: [1, 4, 2, 3], name: "G#Maj7" }
+      ],
+
+      // Sharp Minor 7th Chords
+      "A#m7": [
+        { frets: [1, 1, 3, 1], fingers: [1, 2, 4, 3], name: "A#m7" },
+        { frets: [3, 3, 5, 1], fingers: [3, 4, 2, 1], name: "A#m7" }
+      ],
+      "C#m7": [
+        { frets: [4, 4, 4, 2], fingers: [3, 4, 2, 1], name: "C#m7" },
+        { frets: [6, 6, 6, 4], fingers: [3, 4, 2, 1], name: "C#m7" }
+      ],
+      "D#m7": [
+        { frets: [1, 1, 3, 3], fingers: [1, 2, 3, 4], name: "D#m7" },
+        { frets: [3, 1, 3, 3], fingers: [3, 1, 2, 4], name: "D#m7" }
+      ],
+      "F#m7": [
+        { frets: [4, 4, 6, 2], fingers: [3, 4, 2, 1], name: "F#m7" },
+        { frets: [2, 2, 4, 0], fingers: [2, 3, 4, null], name: "F#m7" }
+      ],
+      "G#m7": [
+        { frets: [1, 3, 1, 1], fingers: [1, 4, 2, 3], name: "G#m7" },
+        { frets: [6, 8, 6, 6], fingers: [1, 4, 2, 3], name: "G#m7" }
+      ]
+    }
+  },
   eacsharp: {
     name: "E A C# F# (EACF)",
     notes: ["E", "A", "C#", "F#"],
