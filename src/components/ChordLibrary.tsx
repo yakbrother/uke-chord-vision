@@ -35,6 +35,19 @@ export const ChordLibrary = ({ selectedTuning }: ChordLibraryProps) => {
 
   return (
     <div className="space-y-6">
+      {/* Chord Diagram */}
+      <Card className="bg-gradient-warm border-2 border-accent/20">
+        <CardContent className="p-6 flex justify-center">
+          <UkuleleChordDiagram
+            chord={{
+              ...currentVariation,
+              tuning: tuningData.notes,
+              tuningName: selectedTuning.toUpperCase()
+            }}
+          />
+        </CardContent>
+      </Card>
+
       {/* Chord Type Selector */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="space-y-3">
@@ -116,19 +129,6 @@ export const ChordLibrary = ({ selectedTuning }: ChordLibraryProps) => {
           </Select>
         </div>
       )}
-
-      {/* Chord Diagram */}
-      <Card className="bg-gradient-warm border-2 border-accent/20">
-        <CardContent className="p-6 flex justify-center">
-          <UkuleleChordDiagram
-            chord={{
-              ...currentVariation,
-              tuning: tuningData.notes,
-              tuningName: selectedTuning.toUpperCase()
-            }}
-          />
-        </CardContent>
-      </Card>
 
       {/* Chord Information */}
       <div className="bg-card rounded-lg p-4 space-y-2">
