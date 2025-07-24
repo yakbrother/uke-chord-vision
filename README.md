@@ -1,73 +1,141 @@
-# Welcome to your Lovable project
+# Alt Ukulele - Interactive Chord Library
 
-## Project info
+![Alt Ukulele App](src/assets/readme-hero.jpg)
 
-**URL**: https://lovable.dev/projects/679f96b3-1ac5-48b8-bc88-dbbd74410082
+A modern, interactive ukulele chord library app that supports multiple tunings and provides audio playback for each chord. Perfect for beginners learning their first chords or advanced players exploring alternative tunings.
 
-## How can I edit this code?
+## 🎵 Features
 
-There are several ways of editing your application.
+- **Multiple Tunings Support**: GCEA (Standard), EAEA, EACF#, and ADFB (Open D)
+- **Interactive Chord Diagrams**: Visual representations of finger positions
+- **Audio Playback**: Hear how each chord sounds with octave-accurate audio
+- **Arpeggio Mode**: Play chords as arpeggios for learning individual notes
+- **Comprehensive Chord Library**: Major, minor, sharp, and 7th chords for each tuning
+- **Responsive Design**: Works seamlessly on desktop and mobile devices
+- **Clean, Modern UI**: Built with shadcn/ui components and Tailwind CSS
 
-**Use Lovable**
+## 🚀 Technologies Used
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/679f96b3-1ac5-48b8-bc88-dbbd74410082) and start prompting.
+- **React 18** - Modern React with hooks
+- **TypeScript** - Type-safe development
+- **Tailwind CSS** - Utility-first styling
+- **shadcn/ui** - Beautiful, accessible components
+- **Vite** - Fast build tool and development server
+- **Web Audio API** - Real-time audio synthesis
+- **Lucide React** - Beautiful icons
 
-Changes made via Lovable will be committed automatically to this repo.
+## 📱 Demo
 
-**Use your preferred IDE**
+Visit the live app: [Alt Ukulele on Lovable](https://lovable.dev/projects/679f96b3-1ac5-48b8-bc88-dbbd74410082)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🛠️ Installation & Setup
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Prerequisites
+- Node.js (version 18 or higher)
+- npm or yarn package manager
 
-Follow these steps:
+### Local Development
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+1. **Clone the repository**
+   ```bash
+   git clone <YOUR_GIT_URL>
+   cd <YOUR_PROJECT_NAME>
+   ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+3. **Start the development server**
+   ```bash
+   npm run dev
+   ```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+4. **Open your browser**
+   Navigate to `http://localhost:5173` to see the app running locally.
+
+### Building for Production
+
+```bash
+npm run build
 ```
 
-**Edit a file directly in GitHub**
+The built files will be in the `dist` directory, ready for deployment.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🎸 How to Use
 
-**Use GitHub Codespaces**
+1. **Select a Tuning**: Choose from GCEA (standard), EAEA, EACF#, or ADFB tunings
+2. **Browse Chords**: Scroll through the available chords for your selected tuning
+3. **View Diagrams**: See finger positions on the interactive ukulele fretboard
+4. **Play Audio**: Click the play button to hear the chord
+5. **Try Arpeggio**: Use the arpeggio button to hear notes played individually
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Chord Diagram Reading
+- **Dots**: Show where to place your fingers
+- **Numbers**: Indicate which finger to use (1-4)
+- **X**: String not played
+- **0**: Open string (no finger needed)
 
-## What technologies are used for this project?
+## 🎵 Supported Tunings
 
-This project is built with:
+| Tuning | Notes | Description |
+|--------|-------|-------------|
+| GCEA | G-C-E-A | Standard ukulele tuning |
+| EAEA | E-A-E-A | Alternative tuning with octave variation |
+| EACF# | E-A-C#-F# | Open E tuning |
+| ADFB | A-D-F#-B | Open D tuning |
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 🔧 Project Structure
 
-## How can I deploy this project?
+```
+src/
+├── components/          # React components
+│   ├── ui/             # shadcn/ui components
+│   ├── ChordLibrary.tsx    # Main chord display
+│   ├── TuningSelector.tsx  # Tuning selection
+│   └── UkuleleChordDiagram.tsx # Chord visualization
+├── data/
+│   └── chordData.ts    # Chord definitions for all tunings
+├── utils/
+│   ├── audioPlayer.ts  # Web Audio API integration
+│   └── noteCalculator.ts # Music theory calculations
+└── pages/
+    └── Index.tsx       # Main app page
+```
 
-Simply open [Lovable](https://lovable.dev/projects/679f96b3-1ac5-48b8-bc88-dbbd74410082) and click on Share -> Publish.
+## 🤝 Contributing
 
-## Can I connect a custom domain to my Lovable project?
+We welcome contributions! Here's how you can help:
 
-Yes, you can!
+1. **Fork the repository**
+2. **Create a feature branch**: `git checkout -b feature/new-chord-tuning`
+3. **Make your changes**: Add new tunings, chords, or features
+4. **Test thoroughly**: Ensure audio playback works correctly
+5. **Submit a pull request**: Describe your changes clearly
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Ideas for Contributions
+- Add more alternative tunings
+- Include chord variations and inversions
+- Add chord progression suggestions
+- Implement a tuner feature
+- Add chord transition animations
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 🐛 Bug Reports & Feature Requests
+
+Found a bug or have an idea for a new feature? Please [open an issue](https://github.com/yourusername/alt-ukulele/issues) on GitHub.
+
+## 🙏 Acknowledgments
+
+- Built with [Lovable](https://lovable.dev) - AI-powered development platform
+- Icons by [Lucide](https://lucide.dev)
+- UI components from [shadcn/ui](https://ui.shadcn.com)
+- Inspired by the ukulele community and alternative tuning enthusiasts
+
+---
+
+**Happy strumming! 🎵**
