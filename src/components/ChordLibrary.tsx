@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { UkuleleChordDiagram } from "./UkuleleChordDiagram";
 import { getAllChords, tunings } from "@/data/chordData";
-import { cn } from "@/lib/utils";
+import { Label } from "@/components/ui/label";
 
 interface ChordLibraryProps {
   selectedTuning: string;
@@ -27,51 +27,101 @@ export const ChordLibrary = ({ selectedTuning }: ChordLibraryProps) => {
 
   const currentVariation = currentChordData.variations[selectedVariation];
 
+  // Group chords by type
+  const majorChords = chords.filter(chord => !chord.name.includes('m') && !chord.name.includes('7'));
+  const minorChords = chords.filter(chord => chord.name.includes('m') && !chord.name.includes('7'));
+  const seventhChords = chords.filter(chord => chord.name.includes('7'));
+
   return (
     <div className="space-y-6">
-      {/* Chord Selector */}
-      <div className="space-y-3">
-        <h2 className="text-lg font-semibold text-foreground">Select Chord</h2>
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2">
-          {chords.map((chord) => (
-            <Button
-              key={chord.name}
-              variant={selectedChord === chord.name ? "default" : "outline"}
-              size="sm"
-              onClick={() => {
-                setSelectedChord(chord.name);
-                setSelectedVariation(0);
-              }}
-              className={cn(
-                "h-10 font-medium",
-                selectedChord === chord.name 
-                  ? "bg-primary text-primary-foreground" 
-                  : "bg-background hover:bg-accent"
-              )}
-            >
-              {chord.name}
-            </Button>
-          ))}
+      {/* Chord Type Selector */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="space-y-2">
+          <Label htmlFor="major-chords" className="text-sm font-medium">Major Chords</Label>
+          <Select 
+            value={majorChords.some(c => c.name === selectedChord) ? selectedChord : ""} 
+            onValueChange={(value) => {
+              setSelectedChord(value);
+              setSelectedVariation(0);
+            }}
+          >
+            <SelectTrigger id="major-chords" className="w-full">
+              <SelectValue placeholder="Select major chord" />
+            </SelectTrigger>
+            <SelectContent>
+              {majorChords.map((chord) => (
+                <SelectItem key={chord.name} value={chord.name}>
+                  {chord.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="minor-chords" className="text-sm font-medium">Minor Chords</Label>
+          <Select 
+            value={minorChords.some(c => c.name === selectedChord) ? selectedChord : ""} 
+            onValueChange={(value) => {
+              setSelectedChord(value);
+              setSelectedVariation(0);
+            }}
+          >
+            <SelectTrigger id="minor-chords" className="w-full">
+              <SelectValue placeholder="Select minor chord" />
+            </SelectTrigger>
+            <SelectContent>
+              {minorChords.map((chord) => (
+                <SelectItem key={chord.name} value={chord.name}>
+                  {chord.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="seventh-chords" className="text-sm font-medium">7th Chords</Label>
+          <Select 
+            value={seventhChords.some(c => c.name === selectedChord) ? selectedChord : ""} 
+            onValueChange={(value) => {
+              setSelectedChord(value);
+              setSelectedVariation(0);
+            }}
+          >
+            <SelectTrigger id="seventh-chords" className="w-full">
+              <SelectValue placeholder="Select 7th chord" />
+            </SelectTrigger>
+            <SelectContent>
+              {seventhChords.map((chord) => (
+                <SelectItem key={chord.name} value={chord.name}>
+                  {chord.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
       </div>
 
       {/* Variation Selector */}
       {currentChordData.variations.length > 1 && (
         <div className="space-y-3">
-          <h3 className="text-md font-medium text-foreground">Variations</h3>
-          <div className="flex flex-wrap gap-2">
-            {currentChordData.variations.map((_, index) => (
-              <Button
-                key={index}
-                variant={selectedVariation === index ? "default" : "outline"}
-                size="sm"
-                onClick={() => setSelectedVariation(index)}
-                className="h-8 px-3"
-              >
-                {index + 1}
-              </Button>
-            ))}
-          </div>
+          <Label className="text-sm font-medium">Chord Variations</Label>
+          <Select 
+            value={selectedVariation.toString()} 
+            onValueChange={(value) => setSelectedVariation(parseInt(value))}
+          >
+            <SelectTrigger className="w-full max-w-xs">
+              <SelectValue placeholder="Select variation" />
+            </SelectTrigger>
+            <SelectContent>
+              {currentChordData.variations.map((variation, index) => (
+                <SelectItem key={index} value={index.toString()}>
+                  Variation {index + 1} - {variation.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
       )}
 
